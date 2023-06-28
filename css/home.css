@@ -1,0 +1,66 @@
+* {
+    font-family: Verdana;
+}
+
+body{
+    background-image: url("../img/homepoz1.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.jumbotron {
+    background-color: rgba(255, 182, 193, 0);
+    float: center;
+    color: rgb(53, 94, 59);
+    text-align: center;
+    border: 3px white; 
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 20px;
+}
+
+th, td {
+    text-align: center;
+}
+.table thead th {
+    color: black;
+}
+
+.table {
+    background-color: rgb(53, 94, 59);
+    color:white;
+}
+.row{
+    height: 70px;
+}  
+
+.col-md-4{
+    margin-top: 18px;
+} 
+
+:placeholder-shown{
+    width: 300px;
+    height: 30px;
+}
+
+.dodatno-form {
+    width: 85%;
+    border: none;
+    border-radius: 3rem;
+    padding: 2%;
+    align-items: center;
+    font-weight: 600;
+    color: black;
+    cursor: pointer;
+}
+
+.modal-content {
+    background-image: url("../img/poz.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+}
+
+
+

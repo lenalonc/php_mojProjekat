@@ -1,21 +1,52 @@
+<?php
+
+require "dbBroker.php";
+require "model/termin.php";
+
+session_start();
+
+if(empty($_SESSION['loggeduser']) || $_SESSION['loggeduser']==''){
+    header("Location: index.php");
+    die();
+}
+
+$rez = Termin::getAll($conn);
+
+if(!$rez){
+    echo "Greska prilikom ucitavanja elementa tabele";
+    die();
+}
+
+if($rez->num_rows == 0){
+    echo "Nema zakazanih termina";
+    die();
+}
+
+else{
+
+?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="icon" href="img/logo-01.png" />
     <link rel="stylesheet" href="css/home.css">
     <title>Zo.Co.</title>
 </head>
 <body>
     <div class="jumbotron">
         <div class="container">
-            <h1>Kozmeticki salon Zo.Co.</h1>
+            <br>
+            <h1 style="font-weight: bold;">Kozmeticki salon Zo.Co.</h1>
         </div>
     </div>
-
-    <div class="col-md-8" style="text-align:center; width:66.6%;float:left">
+    <img src="img/logo-01.png" alt="logo" class="logo">
+    <div class="col-md-8" style="text-align:center; width:70%; position: fixed; top: 42%; left: 60%; transform: translate(-50%, -50%);">
         <div id="pregled">
             <table id="tabela" class="table table-bordered table-dark">
                 <thead>
@@ -27,28 +58,25 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                    while($red=$rez->fetch_array()):
+                    ?>
                     <tr>
-                        <td>A</td>
-                        <td>B</td>
-                        <td>C</td>
-                        <td>D</td>
+                        <td><?php echo $red["usluga"] ?></td>
+                        <td><?php echo $red["klijent"] ?></td>
+                        <td><?php echo $red["cena"] ?></td>
+                        <td><?php echo $red["datum"] ?></td>
                         <td>
                         <label class="custom-radio-btn">
-                            <input type="radio" name="checked-donut" value=<?php echo $red["id"] ?>>
+                            <input type="radio" name="checked-donut" value=<?php echo $red["id"]?>>
                             <span class="checkmark"></span>
                         </label>
                     </td>
                     </tr>
-                    <tr>
-                        <td>E</td>
-                        <td>F</td>
-                        <td>G</td>
-                        <td>H</td>
-                        <td>
-                        <label class="custom-radio-btn">
-                            <input type="radio" name="checked-donut" value=<?php echo $red["id"] ?>>
-                            <span class="checkmark"></span>
-                        </label>
+                    <?php
+                    endwhile;
+                    }
+                ?>
                     </td>
                     </tr>
                     
@@ -57,26 +85,26 @@
         </div>
     </div>
 
-            <div class="col-md-4" style="width:20%; float:right;">
+            <div class="col-md-4" style="width:30%; position: fixed; bottom: 100px; left: 100px;">
                 
                 <button id="btn" class="btn btn-info btn-block" 
-                style="background-color: #355E3B ; border: 1px solid white; "> Prikazi termine</button>
+                style="width: 300px; height: 50px; background-color: #355E3B ; border: 5px solid; border-radius: 1rem; "> Prikazi termine</button>
                 
                 <button id="btn-dodaj" type="button" class="btn btn-success btn-block"
-                style="background-color: #355E3B ; border: 1px solid white;" data-toggle="modal" data-target="#zakaziModal">Zakazi termin</button>
+                style="width: 300px; height: 50px;background-color: #355E3B ; border: 5px solid; border-radius: 1rem;" data-toggle="modal" data-target="#zakaziModal">Zakazi termin</button>
                 
                 <button id="btn-pretraga" class="btn btn-warning btn-block"
-                style="background-color:  #355E3B; border: 1px solid white;" > Pretrazi termin</button>
+                style="width: 300px; height: 50px;background-color:  #355E3B; border: 5px solid; border-radius: 1rem;" > Pretrazi termin</button>
                 <input type="text" id="myInput" onkeyup="funkcijaZaPretragu()" placeholder="Pretrazi kolokvijume po predmetu" hidden>
-                <br>
+                
                 <button id="btn-izmeni" type="button" class="btn btn-warning btn-block"
-                style="background-color: #355E3B ; border: 1px solid white;" data-toggle="modal" data-target="#izmeniModal">Izmeni</button>
+                style="width: 300px; height: 50px;background-color: #355E3B ; border: 5px solid; border-radius: 1rem;" data-toggle="modal" data-target="#izmeniModal">Izmeni</button>
 
                 <button id="btn-obrisi" class="btn btn-danger btn-block"
-                style="background-color: #355E3B ; border: 1px solid white;">Obrisi termin</button>
+                style="width: 300px; height: 50px;background-color: #355E3B ; border: 5px solid; border-radius: 1rem;">Obrisi termin</button>
                 
                 <button id="btn-sortiraj" class="btn btn-normal btn-block"
-                style="background-color:  #355E3B; border: 1px solid white; color: white;" onclick="sortTable()">Sortiraj</button>
+                style="width: 300px; height: 50px;background-color:  #355E3B; border: 5px solid; color: white; border-radius: 1rem;" onclick="sortTable()">Sortiraj</button>
 
             </div>
 

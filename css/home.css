@@ -8,17 +8,22 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+.logo {
+    position: absolute;
+    bottom: 0px; /* Adjust the distance from the bottom */
+    right: 50px; /* Adjust the distance from the right */
+    width: 300px; /* Adjust the width of the logo */
+    height: 300px; /* Adjust the height of the logo */
+  }
 
 .jumbotron {
-    background-color: rgba(255, 182, 193, 0);
-    float: center;
-    color: rgb(53, 94, 59);
+    background-color: rgba(0, 255, 0, 0.3); /* Green with 30% opacity */
+    border-radius: 1rem;
+    padding: 2rem;
+    color: white;
     text-align: center;
-    border: 3px white; 
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 20px;
-}
+    font-size: 2rem;
+  }
 
 th, td {
     text-align: center;

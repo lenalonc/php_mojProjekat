@@ -1,27 +1,38 @@
-#login img{
-    margin: 5px 0;
-  }
-  #login .center {
-    text-align: center;
-  }
-  
-  #login .login {
-    max-width: 300px;
-    margin: 200px auto;
-  }
-  
-  #login .login-form{
-    padding:0px 25px;
-  }
-
-  body {
-    background-image: url("../img/poz.jpg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+body {
+  background-image: url("../img/poz.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
+.login-container {
+  background-color: #FFEBF2;
+  border: 2px solid #556B2F;
+  border-radius: 10px;
+  padding: 40px;
+  text-align: center;
+  max-width: 400px;
+  width: 80%;
+}
 
-*{
-  font: Ariel;
+.form-control {
+  border-radius: 10px;
+  border: 2px solid #556B2F;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  border-radius: 10px;
+  background-color: #556B2F !important; 
+  border-color: #556B2F !important;
+  color: white;
+ 
 }

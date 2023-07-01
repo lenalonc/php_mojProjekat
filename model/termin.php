@@ -34,6 +34,11 @@ class Termin{
         }
         return $myArray;
     }
+    public static function deleteById($id, mysqli $conn)
+    {
+        $query = "DELETE FROM zakazani_termini WHERE id=$id";
+        return $conn->query($query);
+    }
 
 
     public static function add($usluga, $klijent, $cena, $datum, mysqli $conn)
@@ -50,11 +55,7 @@ class Termin{
         return $conn->query($query);
     }
 
-    public static function deleteById($id, mysqli $conn)
-    {
-        $query = "DELETE FROM zakazani_termini WHERE id=$id";
-        return $conn->query($query);
-    }
+    
 
 
 

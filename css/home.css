@@ -10,10 +10,10 @@ body{
 }
 .logo {
     position: absolute;
-    bottom: 0px; /* Adjust the distance from the bottom */
-    right: 50px; /* Adjust the distance from the right */
-    width: 300px; /* Adjust the width of the logo */
-    height: 300px; /* Adjust the height of the logo */
+    bottom: 0px; 
+    right: 50px; 
+    width: 300px; 
+    height: 300px; 
   }
 
 .jumbotron {
@@ -54,11 +54,11 @@ th, td {
     border: none;
     border-radius: 3rem;
     padding: 2%;
-    align-items: center;
+    text-align: left;
     font-weight: 600;
     color: black;
     cursor: pointer;
-}
+  }
 
 .modal-content {
     background-image: url("../img/poz.jpg");
@@ -67,5 +67,13 @@ th, td {
     background-attachment: fixed; 
 }
 
+.col-md-4 {
+    width: 30%;
+    position: fixed;
+    bottom: 100px;
+    left: 100px;
+  }
+
+  
 
 

@@ -22,8 +22,39 @@ class Termin{
         return $conn->query($query);
     }
 
+    public static function getById($id, mysqli $conn)
+    {
+        $query = "SELECT * FROM zakazani_termini WHERE id=$id";
+        $myArray = array();
+        if ($result = $conn->query($query)) {
+
+            while ($row = $result->fetch_array(1)) {
+                $myArray[] = $row;
+            }
+        }
+        return $myArray;
+    }
 
 
+    public static function add($usluga, $klijent, $cena, $datum, mysqli $conn)
+    {
+
+        $query = "INSERT INTO zakazani_termini(usluga, klijent, cena, datum) values('$usluga', '$klijent', '$cena',  '$datum')";
+        return $conn->query($query);
+    }
+
+
+    public static function update($id, $usluga, $klijent, $cena, $datum, mysqli $conn)
+    {
+        $query = "UPDATE zakazani_termini set usluga='$usluga', klijent='$klijent', cena='$cena', datum='$datum' where id=$id";
+        return $conn->query($query);
+    }
+
+    public static function deleteById($id, mysqli $conn)
+    {
+        $query = "DELETE FROM zakazani_termini WHERE id=$id";
+        return $conn->query($query);
+    }
 
 
 

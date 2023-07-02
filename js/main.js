@@ -154,5 +154,42 @@ $('#izmeniForm').submit(function () {
 //   return false;
 // });
 
+$('#btn-dodaj').on('click', function() {
+  event.preventDefault(); // Da se spreči podrazumevano ponašanje obrasca
+  
+  request = $.ajax({
+    url: "handler/getTret.php",
+    type: "post",
+    dataType: "json",
+    });
+    request.done(function (response, textStatus, jqXHR) {
+      console.log("Ajax uspeh:", response);
+      console.log('a');
+      if (response.length > 0) {
+        console.log(response.length);
+        var select = $("#uslugaa");
+        console.log(select);
+        select.empty(); // Uklanja postojeće opcije
+        for (var i = 0; i < response.length; i++) {
+          console.log('ciklus: '+response[i]);
+          var option = $("<option>", {
+            value: response[i],
+            text: response[i]
+          });
+          select.append(option);
+        }
+      }
+      else{
+        console.log('nesto nije okej');
+      }
+    });
+        request.fail(function (jqXHR, textStatus, errorThrown) {
+          console.error("The following error occurred: " + textStatus, errorThrown);
+        });
+      
+      });
 
+
+
+  
 

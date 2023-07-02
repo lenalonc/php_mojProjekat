@@ -85,6 +85,9 @@ else{
 
             <div class="col-md-4" style="width:30%; position: fixed; bottom: 100px; left: 100px;">
                 
+                <button class="btn btn-block" style="width: 300px; height: 50px;background-color:  #355E3B; border: 5px solid; color: white; border-radius: 1rem;"
+                onclick="window.location.href = 'cenovnik.php';">Cenovnik</button>
+            
                 <button id="btn" class="btn btn-info btn-block" 
                 style="width: 300px; height: 50px; background-color: #355E3B ; border: 5px solid; border-radius: 1rem; "  onclick="prikazi()"> Prikazi termine</button>
                 
@@ -116,6 +119,7 @@ else{
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
+        
                 <div class="container dodatno-form">
                     <form action="#" method="post" id="dodajForm">
                         <h3 style="color: black; text-align: center">Zakazi termin</h3>
@@ -123,8 +127,12 @@ else{
                             <div class="col-md-11 ">
                                 <div class="form-group">
                                     <label for="">Usluga</label>
-                                    <input  type="text" style="width: 400px;border: 1px solid #355E3B" name="usluga" class="form-control"/>
+                                    <select style="width: 400px; border: 1px solid #355E3B" name="usluga" id="uslugaa" class="form-control">
+                                    
+                                    </select>
+                              <!--  <input  type="text" style="width: 400px;border: 1px solid #355E3B" name="usluga" class="form-control"/> -->
                                 </div>
+                                <br>
                                 <div class="form-group">
                                 <label for="">Klijent</label>
                                     <input type="text" style="width: 400px; border: 1px solid #355E3B" name="klijent" class="form-control"/>
